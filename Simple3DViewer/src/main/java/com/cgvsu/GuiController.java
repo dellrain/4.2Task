@@ -189,14 +189,14 @@ public class GuiController {
 
     //Вращение
     @FXML
-    public void handleRotationYPlus(ActionEvent actionEvent) {
+    public void handleRotationXPlus(ActionEvent actionEvent) {
         float angle = 10.0F;
         float[][] rotationMatrix = Matrix.getRotationX(angle);
         mesh.vertices.forEach(vertex -> vertex.applyMatrix(rotationMatrix));
     }
 
     @FXML
-    public void handleRotationXPlus(ActionEvent actionEvent) {
+    public void handleRotationYPlus(ActionEvent actionEvent) {
         float angle = 10.0F;
         float[][] rotationMatrix = Matrix.getRotationY(angle);
         mesh.vertices.forEach(vertex -> vertex.applyMatrix(rotationMatrix));
@@ -210,14 +210,14 @@ public class GuiController {
     }
 
     @FXML
-    public void handleRotationYMinus(ActionEvent actionEvent) {
+    public void handleRotationXMinus(ActionEvent actionEvent) {
         float angle = -10.0F;
         float[][] rotationMatrix = Matrix.getRotationX(angle);
         mesh.vertices.forEach(vertex -> vertex.applyMatrix(rotationMatrix));
     }
 
     @FXML
-    public void handleRotationXMinus(ActionEvent actionEvent) {
+    public void handleRotationYMinus(ActionEvent actionEvent) {
         float angle = -10.0F;
         float[][] rotationMatrix = Matrix.getRotationY(angle);
         mesh.vertices.forEach(vertex -> vertex.applyMatrix(rotationMatrix));
