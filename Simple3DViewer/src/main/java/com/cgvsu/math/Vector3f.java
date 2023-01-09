@@ -3,7 +3,9 @@ package com.cgvsu.math;
 // Это заготовка для собственной библиотеки для работы с линейной алгеброй
 public class Vector3f {
 
-    float x, y, z;
+    public float x;
+    public float y;
+    public float z;
     float w = 1;
 
     public Vector3f(float x, float y, float z, float w) {
@@ -67,4 +69,10 @@ public class Vector3f {
     }
 
 
+    public void applyMatrix(float[][] matrix) {
+        Vector3f result = Matrix.multiplyVector(matrix, this);
+        this.x = result.x;
+        this.y = result.y;
+        this.z = result.z;
+    }
 }

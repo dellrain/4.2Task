@@ -44,6 +44,7 @@ public class Matrix {
     }
 
     /////Поворот
+
     public static float[][] getRotationX(float angle) {
         float rad = (float)(Math.PI / 180 * angle);
 

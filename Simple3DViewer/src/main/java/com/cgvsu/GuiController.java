@@ -11,11 +11,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.io.IOException;
 import java.io.File;
 import javax.vecmath.Vector3f;
+
+import com.cgvsu.math.Matrix;
 
 import com.cgvsu.model.Model;
 import com.cgvsu.objreader.ObjReader;
@@ -39,6 +42,7 @@ public class GuiController {
             1.0F, 1, 0.01F, 100);
 
     private Timeline timeline;
+
 
     @FXML
     private void initialize() {
@@ -115,4 +119,115 @@ public class GuiController {
     public void handleCameraDown(ActionEvent actionEvent) {
         camera.movePosition(new Vector3f(0, -TRANSLATION, 0));
     }
+
+    //Масштабирование
+    @FXML
+    public void handleScaleXPlus(ActionEvent actionEvent) {
+        float[][] scaleMatrix = Matrix.getScale(1.01f, 1, 1);
+        mesh.vertices.forEach(vertex -> vertex.applyMatrix(scaleMatrix));
+    }
+
+    @FXML
+    public void handleScaleYPlus(ActionEvent actionEvent) {
+        float[][] scaleMatrix = Matrix.getScale(1, 1.01f, 1);
+        mesh.vertices.forEach(vertex -> vertex.applyMatrix(scaleMatrix));
+    }
+
+    @FXML
+    public void handleScaleZPlus(ActionEvent actionEvent) {
+        float[][] scaleMatrix = Matrix.getScale(1, 1, 1.01f);
+        mesh.vertices.forEach(vertex -> vertex.applyMatrix(scaleMatrix));
+    }
+
+    @FXML
+    public void handleScaleXMinus(ActionEvent actionEvent) {
+        float[][] scaleMatrix = Matrix.getScale(0.99f, 1, 1);
+        mesh.vertices.forEach(vertex -> vertex.applyMatrix(scaleMatrix));
+    }
+
+    @FXML
+    public void handleScaleYMinus(ActionEvent actionEvent) {
+        float[][] scaleMatrix = Matrix.getScale(1, 0.99f, 1);
+        mesh.vertices.forEach(vertex -> vertex.applyMatrix(scaleMatrix));
+    }
+
+    @FXML
+    public void handleScaleZMinus(ActionEvent actionEvent) {
+        float[][] scaleMatrix = Matrix.getScale(1, 1, 0.99f);
+        mesh.vertices.forEach(vertex -> vertex.applyMatrix(scaleMatrix));
+    }
+
+
+    //Перемещение
+    @FXML
+    public void handleMovementUp(ActionEvent actionEvent) {
+        for (com.cgvsu.math.Vector3f vertex : mesh.vertices) {
+            vertex.y += 0.1;
+        }
+    }
+
+    @FXML
+    public void handleMovementDown(ActionEvent actionEvent) {
+        for (com.cgvsu.math.Vector3f vertex : mesh.vertices) {
+            vertex.y -= 0.1;
+        }
+    }
+
+    @FXML
+    public void handleMovementLeft(ActionEvent actionEvent) {
+        for (com.cgvsu.math.Vector3f vertex : mesh.vertices) {
+            vertex.x += 0.1;
+        }
+    }
+
+    @FXML
+    public void handleMovementRight(ActionEvent actionEvent) {
+        for (com.cgvsu.math.Vector3f vertex : mesh.vertices) {
+            vertex.x -= 0.1;
+        }
+    }
+
+    //Вращение
+    @FXML
+    public void handleRotationYPlus(ActionEvent actionEvent) {
+        float angle = 10.0F;
+        float[][] rotationMatrix = Matrix.getRotationX(angle);
+        mesh.vertices.forEach(vertex -> vertex.applyMatrix(rotationMatrix));
+    }
+
+    @FXML
+    public void handleRotationXPlus(ActionEvent actionEvent) {
+        float angle = 10.0F;
+        float[][] rotationMatrix = Matrix.getRotationY(angle);
+        mesh.vertices.forEach(vertex -> vertex.applyMatrix(rotationMatrix));
+    }
+
+    @FXML
+    public void handleRotationZPlus(ActionEvent actionEvent) {
+        float angle = 10.0F;
+        float[][] rotationMatrix = Matrix.getRotationZ(angle);
+        mesh.vertices.forEach(vertex -> vertex.applyMatrix(rotationMatrix));
+    }
+
+    @FXML
+    public void handleRotationYMinus(ActionEvent actionEvent) {
+        float angle = -10.0F;
+        float[][] rotationMatrix = Matrix.getRotationX(angle);
+        mesh.vertices.forEach(vertex -> vertex.applyMatrix(rotationMatrix));
+    }
+
+    @FXML
+    public void handleRotationXMinus(ActionEvent actionEvent) {
+        float angle = -10.0F;
+        float[][] rotationMatrix = Matrix.getRotationY(angle);
+        mesh.vertices.forEach(vertex -> vertex.applyMatrix(rotationMatrix));
+    }
+
+    @FXML
+    public void handleRotationZMinus(ActionEvent actionEvent) {
+        float angle = -10.0F;
+        float[][] rotationMatrix = Matrix.getRotationZ(angle);
+        mesh.vertices.forEach(vertex -> vertex.applyMatrix(rotationMatrix));
+    }
+
 }
