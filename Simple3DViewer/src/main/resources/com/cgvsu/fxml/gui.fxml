@@ -48,24 +48,34 @@
         </Menu>
 
         <Menu mnemonicParsing="false" text="Object moving">
-            <MenuItem mnemonicParsing="false" onAction="#handleMovementUp" text="Up">
+            <MenuItem mnemonicParsing="false" onAction="#handleMovementYPlus" text="Y+">
                 <accelerator>
                     <KeyCodeCombination alt="UP" code="W" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
-            <MenuItem mnemonicParsing="false" onAction="#handleMovementDown" text="Down">
+            <MenuItem mnemonicParsing="false" onAction="#handleMovementYMinus" text="Y-">
                 <accelerator>
                     <KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
-            <MenuItem mnemonicParsing="false" onAction="#handleMovementLeft" text="Left">
+            <MenuItem mnemonicParsing="false" onAction="#handleMovementXMinus" text="X-">
                 <accelerator>
                     <KeyCodeCombination alt="UP" code="A" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
-            <MenuItem mnemonicParsing="false" onAction="#handleMovementRight" text="Right">
+            <MenuItem mnemonicParsing="false" onAction="#handleMovementXPlus" text="X+">
                 <accelerator>
                     <KeyCodeCombination alt="UP" code="D" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                </accelerator>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" onAction="#handleMovementZPlus" text="Z+">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                </accelerator>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" onAction="#handleMovementZMinus" text="Z-">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="W" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
                 </accelerator>
             </MenuItem>
         </Menu>

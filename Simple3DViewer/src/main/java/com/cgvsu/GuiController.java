@@ -160,30 +160,56 @@ public class GuiController {
 
     //Перемещение
     @FXML
-    public void handleMovementUp(ActionEvent actionEvent) {
-        for (com.cgvsu.math.Vector3f vertex : mesh.vertices) {
-            vertex.y += 0.1;
+    public void handleMovementYPlus(ActionEvent actionEvent) {
+        float[][] transform = Matrix.getTranslation(0, 0.5f, 0);
+        for (int i = 0; i < mesh.vertices.size(); i++) {
+            com.cgvsu.math.Vector3f v = mesh.vertices.get(i);
+            mesh.vertices.set(i, Matrix.multiplyVector(transform, v));
         }
     }
 
     @FXML
-    public void handleMovementDown(ActionEvent actionEvent) {
-        for (com.cgvsu.math.Vector3f vertex : mesh.vertices) {
-            vertex.y -= 0.1;
+    public void handleMovementYMinus(ActionEvent actionEvent) {
+        float[][] transform = Matrix.getTranslation(0, -0.5f, 0);
+        for (int i = 0; i < mesh.vertices.size(); i++) {
+            com.cgvsu.math.Vector3f v = mesh.vertices.get(i);
+            mesh.vertices.set(i, Matrix.multiplyVector(transform, v));
         }
     }
 
     @FXML
-    public void handleMovementLeft(ActionEvent actionEvent) {
-        for (com.cgvsu.math.Vector3f vertex : mesh.vertices) {
-            vertex.x += 0.1;
+    public void handleMovementXMinus(ActionEvent actionEvent) {
+        float[][] transform = Matrix.getTranslation(0.5f, 0, 0);
+        for (int i = 0; i < mesh.vertices.size(); i++) {
+            com.cgvsu.math.Vector3f v = mesh.vertices.get(i);
+            mesh.vertices.set(i, Matrix.multiplyVector(transform, v));
         }
     }
 
     @FXML
-    public void handleMovementRight(ActionEvent actionEvent) {
-        for (com.cgvsu.math.Vector3f vertex : mesh.vertices) {
-            vertex.x -= 0.1;
+    public void handleMovementXPlus(ActionEvent actionEvent) {
+        float[][] transform = Matrix.getTranslation(-0.5f, 0, 0);
+        for (int i = 0; i < mesh.vertices.size(); i++) {
+            com.cgvsu.math.Vector3f v = mesh.vertices.get(i);
+            mesh.vertices.set(i, Matrix.multiplyVector(transform, v));
+        }
+    }
+
+    @FXML
+    public void handleMovementZPlus(ActionEvent actionEvent) {
+        float[][] transform = Matrix.getTranslation(0, 0, 0.5f);
+        for (int i = 0; i < mesh.vertices.size(); i++) {
+            com.cgvsu.math.Vector3f v = mesh.vertices.get(i);
+            mesh.vertices.set(i, Matrix.multiplyVector(transform, v));
+        }
+    }
+
+    @FXML
+    public void handleMovementZMinus(ActionEvent actionEvent) {
+        float[][] transform = Matrix.getTranslation(0, 0, -0.5f);
+        for (int i = 0; i < mesh.vertices.size(); i++) {
+            com.cgvsu.math.Vector3f v = mesh.vertices.get(i);
+            mesh.vertices.set(i, Matrix.multiplyVector(transform, v));
         }
     }
 
@@ -229,5 +255,6 @@ public class GuiController {
         float[][] rotationMatrix = Matrix.getRotationZ(angle);
         mesh.vertices.forEach(vertex -> vertex.applyMatrix(rotationMatrix));
     }
+
 
 }
